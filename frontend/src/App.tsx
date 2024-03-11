@@ -1,9 +1,11 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import { Home } from './components/Home'
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import Question from './components/Question'
-import { getQuestion } from './util'
+import { getQuestion, setClientToken } from './util'
+import Login from './components/LogIn'
+import { Welcome } from './components/Welcome'
 
 function App() {
   const [spotifyId, setSpotifyId] = useState("");
@@ -12,7 +14,23 @@ function App() {
   const [option2, setOption2]  = useState("");
   const [option3, setOption3]  = useState("");
   const [option4, setOption4]  = useState("");
+  const [token, setToken] = useState<string | null>("");
 
+  useEffect(() => {
+    const token = window.localStorage.getItem("token");
+    const hash: string = window.location.hash;
+    window.location.hash = "";
+    if (!token && hash) {
+      const extractedToken = hash.split("=")[1].split("&")[0];
+      window.localStorage.setItem("token", extractedToken);
+      setToken(extractedToken);
+      setClientToken(extractedToken);
+    } else {
+      setToken(token);
+      setClientToken(token);
+    }
+  },[])
+  
   const handleclick = () => {
     console.log("in try block");
     getQuestion()
@@ -29,11 +47,13 @@ function App() {
       })
       .catch((e) => console.log(e));
   };
-  
-  return (
+
+  return !token ? (
+    <Login />
+  ) : (
     <>
-      {/* <Home /> */}
       <Routes>
+        <Route index element={<Welcome />}></Route>
         <Route path="/home/*" element={<Home handleclick={handleclick}/>}></Route>
       <Route
         path="/questions"
