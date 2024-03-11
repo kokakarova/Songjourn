@@ -7,3 +7,7 @@ An app for music lovers. Initial feature will have a quiz that will test users' 
 
 DataBase:  
 ![Songjourn-quiz-DB](https://github.com/kokakarova/Songjourn/assets/152164001/68f3f723-3b8f-4e83-8270-203164757c4a)
+
+   Possible additional features:  
+   1. Bonus questions
+   2. Guess the year quiz
