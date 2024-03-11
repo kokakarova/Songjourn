@@ -6,12 +6,12 @@ import Question from './components/Question'
 import { getQuestion } from './util'
 
 function App() {
-  let spotifyId = "";
-  let correctAnswer = "";
-  let option1 = "";
-  let option2 = "";
-  let option3 = "";
-  let option4 = "";
+  const [spotifyId, setSpotifyId] = useState("");
+  const [correctAnswer, setCorrectAnswer] = useState("");
+  const [option1, setOption1] = useState("");
+  const [option2, setOption2]  = useState("");
+  const [option3, setOption3]  = useState("");
+  const [option4, setOption4]  = useState("");
 
   const handleclick = () => {
     console.log("in try block");
@@ -19,12 +19,12 @@ function App() {
       .then(async (res) => res.json())
       .then((data) => {
         // setQuestion(data);
-        spotifyId = data.spotifyId;
-        correctAnswer = data.correctAnswer;
-        option1 = data.option1;
-        option2 = data.option2;
-        option3 = data.option3;
-        option4 = data.option4;
+        setSpotifyId(data.spotifyId);
+        setCorrectAnswer(data.correctAnswer);
+        setOption1(data.option1);
+        setOption2(data.option2);
+        setOption3(data.option3);
+        setOption4(data.option4);
         console.log("fetched data: ", data.spotifyId);
       })
       .catch((e) => console.log(e));
