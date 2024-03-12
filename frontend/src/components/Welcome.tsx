@@ -8,7 +8,7 @@ export const Welcome = () => {
         Currently we have a quiz feature ready. More goodies are comming soon
       </div>
       <button>
-        <Link to="/home">Go To Quiz</Link>
+        <Link to="/homequiz">Go To Quiz</Link>
       </button>
     </>
   );

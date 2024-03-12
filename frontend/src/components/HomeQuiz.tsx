@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 
-export type HomeProps = {
+export type HomeQuizProps = {
   handleclick: () => void;
 };
 
-export const Home = (props: HomeProps | null) => {
+export const HomeQuiz = (props: HomeQuizProps | null) => {
   // const [question, setQuestion] = useState<QuestionType>();
   
   return (

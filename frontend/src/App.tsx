@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
-import { Home } from './components/Home'
-import { Navigate, Route, Routes } from 'react-router-dom'
+import { HomeQuiz } from './components/HomeQuiz'
+import { Route, Routes } from 'react-router-dom'
 import Question from './components/Question'
 import { getQuestion, setClientToken } from './util'
 import Login from './components/LogIn'
@@ -54,7 +54,7 @@ function App() {
     <>
       <Routes>
         <Route index element={<Welcome />}></Route>
-        <Route path="/home/*" element={<Home handleclick={handleclick}/>}></Route>
+        <Route path="/homequiz/*" element={<HomeQuiz handleclick={handleclick}/>}></Route>
       <Route
         path="/questions"
         element={
