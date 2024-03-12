@@ -25,4 +25,12 @@ export const setClientToken = (token: string | null) => {
     })
 }
 
+export const getTrackPreview = async (spotifyId: string) => {
+    // const header = {"Authorization": "Bearer BQDLwR-uoAymRCoIZGZGSsAQSxVTATyBeYupCBMH9EPuO-LYo1MH_WAUnArJfqlpyLtSOl3fA44FpjzwtkwOlqts5GJBputY4A-tpaepuKOENCTbqpman2Tnj8iWPDnail-naLuLtfm-QElC0Bq9QefP1o-sZgrPtbUczPLRktC97lvXbB9T9ySZPRJRknhzCdo"};
+    const res = await fetch(`https://api.spotify.com/v1/tracks/${spotifyId}`, 
+    {headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer BQDLwR-uoAymRCoIZGZGSsAQSxVTATyBeYupCBMH9EPuO-LYo1MH_WAUnArJfqlpyLtSOl3fA44FpjzwtkwOlqts5GJBputY4A-tpaepuKOENCTbqpman2Tnj8iWPDnail-naLuLtfm-QElC0Bq9QefP1o-sZgrPtbUczPLRktC97lvXbB9T9ySZPRJRknhzCdo"}})
+    return res.json();
+}
 export default apiClient;

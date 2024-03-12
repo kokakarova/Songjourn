@@ -39,7 +39,7 @@ public class Controller {
         List<Question> testList = new ArrayList<>();
         Question testQ1 = new Question();
         Question testQ2 = new Question();
-        testQ1.setSpotifyId("https://api.spotify.com/v1/tracks/2takcwOaAZWiXQijPHIx7B");
+        testQ1.setSpotifyId("2takcwOaAZWiXQijPHIx7B");
         testQ1.setCorrectAnswer("Sweden");
         testQ1.setOption1("Sweden");
         testQ1.setOption2("USA");
@@ -48,7 +48,7 @@ public class Controller {
 
         testList.add(testQ1);
 
-        testQ2.setSpotifyId("https://api.spotify.com/v1/tracks/1EjIXKhNHI00ZLMRpS8iz8");
+        testQ2.setSpotifyId("1EjIXKhNHI00ZLMRpS8iz8");
         testQ2.setCorrectAnswer("Switzerland");
         testQ2.setOption1("UK");
         testQ2.setOption2("Switzerland");

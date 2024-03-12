@@ -1,7 +1,7 @@
 import { Navigate, Outlet, useLoaderData } from "react-router-dom";
 import { QuestionType } from "../types";
-import { getQuestion } from "../util";
-import { useState } from "react";
+import { getQuestion, getTrackPreview } from "../util";
+import { useEffect, useState } from "react";
 
 export let result = 0;
 
@@ -9,6 +9,12 @@ export default function StartedQuiz() {
   const question: QuestionType[] = useLoaderData() as QuestionType[];
   const [questionNumber, setQuestionNumber] = useState<number>(1);
   const [answer, setAnswer] = useState<string>();
+  const [trackPreview, setTrackPreview] = useState<string>();
+
+  useEffect(() => {
+    getTrackPreview(question[questionNumber-1].spotifyId)
+    .then(data => setTrackPreview(data.preview_url))
+  }, [questionNumber])
 
   const evaluateAnswer = (e) => {
     const turnSet = questionNumber + 1;
@@ -41,6 +47,7 @@ export default function StartedQuiz() {
         </>
       )}
       <div> Where is this song from? </div>
+      <audio src={trackPreview} controls></audio>
       <button
         className="button-answers"
         onClick={(e) => evaluateAnswer(e.currentTarget.value)}
