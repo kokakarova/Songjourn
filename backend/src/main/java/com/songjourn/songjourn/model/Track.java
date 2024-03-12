@@ -13,5 +13,7 @@ public class Track {
     @Column(name = "spotify_id")
     private String spotifyId;
 
-    // country id
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "country_id")
+    private Country country;
 }

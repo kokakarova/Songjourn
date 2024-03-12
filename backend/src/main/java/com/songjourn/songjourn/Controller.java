@@ -1,7 +1,6 @@
 package com.songjourn.songjourn;
 
-import com.songjourn.songjourn.model.Question;
-import org.apache.catalina.connector.Response;
+import com.songjourn.songjourn.model.Questions;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,25 +34,25 @@ public class Controller {
 //    }
     // 1EjIXKhNHI00ZLMRpS8iz8
     @GetMapping
-    public ResponseEntity<List<Question>> getQuestion() {
-        List<Question> testList = new ArrayList<>();
-        Question testQ1 = new Question();
-        Question testQ2 = new Question();
+    public ResponseEntity<List<Questions>> getQuestion() {
+        List<Questions> testList = new ArrayList<>();
+        Questions testQ1 = new Questions();
+        Questions testQ2 = new Questions();
         testQ1.setSpotifyId("2takcwOaAZWiXQijPHIx7B");
         testQ1.setCorrectAnswer("Sweden");
-        testQ1.setOption1("Sweden");
-        testQ1.setOption2("USA");
-        testQ1.setOption3("Finland");
-        testQ1.setOption4("Korea");
+//        testQ1.setOption1("Sweden");
+//        testQ1.setOption2("USA");
+//        testQ1.setOption3("Finland");
+//        testQ1.setOption4("Korea");
 
         testList.add(testQ1);
 
         testQ2.setSpotifyId("1EjIXKhNHI00ZLMRpS8iz8");
         testQ2.setCorrectAnswer("Switzerland");
-        testQ2.setOption1("UK");
-        testQ2.setOption2("Switzerland");
-        testQ2.setOption3("Netherlands");
-        testQ2.setOption4("Germany");
+//        testQ2.setOption1("UK");
+//        testQ2.setOption2("Switzerland");
+//        testQ2.setOption3("Netherlands");
+//        testQ2.setOption4("Germany");
 
         testList.add(testQ2);
 

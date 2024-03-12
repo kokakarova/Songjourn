@@ -3,15 +3,26 @@ spring:
     name: songjourn
   datasource:
     url: jdbc:postgresql://localhost:5432/songjourndb
-    username: ${POSTGRES_USER_NAME}
-    password: ${POSTGRES_PASSWORD}
+#    username: ${POSTGRES_USER_NAME}
+    username: songjourn
+#    password: ${POSTGRES_PASSWORD}
+    password: secret
   jpa:
     defer-datasource-initialization: true
     hibernate:
       ddl-auto: create-drop
+    show-sql: true
   h2:
     console:
       enabled: true
       path: /songjourn
+  sql:
+    init:
+      data-locations: classpath:data.sql
+      platform: postgresql
+      mode: always
+  output:
+    ansi:
+      enabled: always
 server:
   port: 8011
