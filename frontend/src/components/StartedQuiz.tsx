@@ -34,8 +34,7 @@ export default function StartedQuiz() {
       setQuestionNumber(turnSet);
     }, 2500);
   };
-  if (questionNumber > 2) {
-    // add artist and song to correct/incorrect
+  if (questionNumber > 5) {
     return <Navigate to="/result" />;
   }
   return (

@@ -20,4 +20,8 @@ public class Track {
     public String getSpotifyId() {
         return spotifyId;
     }
+
+    public Country getCountry() {
+        return country;
+    }
 }

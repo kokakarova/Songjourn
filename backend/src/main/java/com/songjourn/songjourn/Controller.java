@@ -22,9 +22,10 @@ private final QuizService service;
 
     @GetMapping
     public ResponseEntity<List<QuestionDto>> getQuestion() {
-        List<QuestionDto> questionsList = new ArrayList<>();
-        service.getListOfQuestions();
-        // convert questions to DTO
+        List<QuestionDto> questionsList = service.getListOfQuestions()
+                .stream()
+                .map(Converter::toDto)
+                .toList();
         return ResponseEntity.ok().body(questionsList);
     }
 

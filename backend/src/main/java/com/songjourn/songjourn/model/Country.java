@@ -20,4 +20,16 @@ public class Country {
 
     @OneToMany(mappedBy = "country")
     private List<Track> tracks;
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public List<Track> getTracks() {
+        return tracks;
+    }
 }
