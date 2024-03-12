@@ -1,17 +1,17 @@
 spring:
   application:
     name: songjourn
-#  datasource:
-#    url: jdbc:postgresql://localhost:5432/saltdb
-#    username: salt
-#    password: secret
-#  jpa:
-#    defer-datasource-initialization: true
-#    hibernate:
-#      ddl-auto: update
-#  h2:
-#    console:
-#      enabled: true
-#      path: /KJJ-console
+  datasource:
+    url: jdbc:postgresql://localhost:5432/songjourndb
+    username: ${POSTGRES_USER_NAME}
+    password: ${POSTGRES_PASSWORD}
+  jpa:
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: create-drop
+  h2:
+    console:
+      enabled: true
+      path: /songjourn
 server:
   port: 8011

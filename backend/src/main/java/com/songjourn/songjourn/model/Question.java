@@ -1,15 +1,45 @@
 package com.songjourn.songjourn.model;
 
+import jakarta.persistence.*;
 import org.springframework.stereotype.Component;
 
-@Component
+import java.util.List;
+
+@Entity
 public class Question {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "question_id")
+    private Long id;
+
+    @Column(name = "spotify_id") // foreign key to track table
     private String spotifyId;
+
+    @Column(name = "correct_answer") // foreign key to track table
     private String correctAnswer;
-    private String option1;
-    private String option2;
-    private String option3;
-    private String option4;
+
+    @ManyToMany
+    @JoinTable(
+            name = "answer_options",
+            joinColumns = @JoinColumn(name = "question_id"),
+            inverseJoinColumns = @JoinColumn(name = "country_id")
+    )
+    private List<Country> answerOptions;
+
+//    @Column(name = "option_1")  // foreign key to country table
+//    private String option1;
+//
+//    @Column(name = "option_2") // foreign key to country table
+//    private String option2;
+//
+//    @Column(name = "option_3") // foreign key to country table
+//    private String option3;
+//
+//    @Column(name = "option_4") // foreign key to country table
+//    private String option4;
+
+    public Question() {
+    }
 
     public String getSpotifyId() {
         return spotifyId;
@@ -25,37 +55,5 @@ public class Question {
 
     public void setCorrectAnswer(String correctAnswer) {
         this.correctAnswer = correctAnswer;
-    }
-
-    public String getOption1() {
-        return option1;
-    }
-
-    public void setOption1(String option1) {
-        this.option1 = option1;
-    }
-
-    public String getOption2() {
-        return option2;
-    }
-
-    public void setOption2(String option2) {
-        this.option2 = option2;
-    }
-
-    public String getOption3() {
-        return option3;
-    }
-
-    public void setOption3(String option3) {
-        this.option3 = option3;
-    }
-
-    public String getOption4() {
-        return option4;
-    }
-
-    public void setOption4(String option4) {
-        this.option4 = option4;
     }
 }
