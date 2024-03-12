@@ -57,9 +57,6 @@ public class Controller {
 
         testList.add(testQ2);
 
-        System.out.println("testList 1 = " + testList.get(0).getCorrectAnswer());
-        System.out.println("testList 2 = " + testList.get(1).getCorrectAnswer());
-
         return ResponseEntity.ok().body(testList);
     }
 

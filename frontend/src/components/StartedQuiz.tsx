@@ -1,6 +1,6 @@
 import { Navigate, Outlet, useLoaderData } from "react-router-dom";
 import { QuestionType } from "../types";
-import { getQuestion, getTrackPreview } from "../util";
+import { getQuestions, getTrackPreview } from "../util";
 import { useEffect, useState } from "react";
 
 export let result = 0;
@@ -9,14 +9,19 @@ export default function StartedQuiz() {
   const question: QuestionType[] = useLoaderData() as QuestionType[];
   const [questionNumber, setQuestionNumber] = useState<number>(1);
   const [answer, setAnswer] = useState<string>();
-  const [trackPreview, setTrackPreview] = useState<string>();
+  const [trackPreviewLink, setTrackPreviewLink] = useState<string>();
+  const [artist, setArtist] = useState<string>();
+  const [trackTitle, setTrackTitle] = useState<string>();
 
   useEffect(() => {
-    getTrackPreview(question[questionNumber-1].spotifyId)
-    .then(data => setTrackPreview(data.preview_url))
-  }, [questionNumber])
+    getTrackPreview(question[questionNumber - 1].spotifyId).then((data) => {
+      setArtist(data.artists[0].name);
+      setTrackTitle(data.name);
+      setTrackPreviewLink(data.preview_url);
+    });
+  }, [questionNumber]);
 
-  const evaluateAnswer = (e) => {
+  const evaluateAnswer = (e: string) => {
     const turnSet = questionNumber + 1;
     if (e === question![questionNumber - 1].correctAnswer) {
       result += 20;
@@ -29,25 +34,29 @@ export default function StartedQuiz() {
       setQuestionNumber(turnSet);
     }, 2500);
   };
-  if(questionNumber > 2) {
-    return (
-    <Navigate to="/result" />
-    )
+  if (questionNumber > 2) {
+    // add artist and song to correct/incorrect
+    return <Navigate to="/result" />;
   }
   return (
     <div className="flex-container">
       <div>Question {questionNumber}/5</div>
-      {answer === "correct" && <div> CORRECT </div>}
+      {answer === "correct" && (
+        <>
+          <div> CORRECT </div>
+          <div>{artist} - {trackTitle}</div>
+          <div>From {question![questionNumber - 1].correctAnswer}</div>
+        </>
+      )}
       {answer === "incorrect" && (
         <>
           <div> Wrong </div>
-          <div>
-            Correct answer was: {question![questionNumber - 1].correctAnswer}
-          </div>
+          <div>{artist} - {trackTitle}</div>
+          <div>From {question![questionNumber - 1].correctAnswer}</div>
         </>
       )}
       <div> Where is this song from? </div>
-      <audio src={trackPreview} controls></audio>
+      <audio src={trackPreviewLink} controls></audio>
       <button
         className="button-answers"
         onClick={(e) => evaluateAnswer(e.currentTarget.value)}
@@ -81,6 +90,6 @@ export default function StartedQuiz() {
 }
 
 export const questionLoader = async () => {
-  const res = await getQuestion();
+  const res = await getQuestions();
   return res.json();
 };

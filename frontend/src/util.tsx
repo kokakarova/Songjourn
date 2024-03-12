@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // fetching from backend
-export const getQuestion = () => fetch("http://localhost:8011/api");
+export const getQuestions = () => fetch("http://localhost:8011/api");
 
 // fetching from spotify
 
