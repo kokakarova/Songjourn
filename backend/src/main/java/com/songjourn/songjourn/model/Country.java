@@ -15,8 +15,8 @@ public class Country {
     @Column(name = "country_name")
     private String country;
 
-    @ManyToMany(mappedBy = "answerOptions")
-    private List<Questions> questions;
+//    @ManyToMany(mappedBy = "answerOptions")
+//    private List<Questions> questions;
 
     @OneToMany(mappedBy = "country")
     private List<Track> tracks;
