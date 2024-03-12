@@ -9,6 +9,7 @@ const authEndpoint = "https://accounts.spotify.com/authorize?";
 const clientId = "c1b3029721c1461b95e1bf4dc779efbf";
 const redirectUri = "http://localhost:5173";
 const scopes = ["playlist-modify-private", "playlist-modify-public"];
+let localToken: string | null;
 
 export const loginEndpoint = `${authEndpoint}client_id=${clientId}&redirect_uri=${redirectUri}&scopes=${scopes.join(
   "%20"
@@ -19,6 +20,7 @@ const apiClient = axios.create({
 });
 
 export const setClientToken = (token: string | null) => {
+    localToken = token;
     apiClient.interceptors.request.use(async function(config) {
         config.headers.Authorization = "Bearer" + token;
         return config;
@@ -26,11 +28,10 @@ export const setClientToken = (token: string | null) => {
 }
 
 export const getTrackPreview = async (spotifyId: string) => {
-    // const header = {"Authorization": "Bearer BQDLwR-uoAymRCoIZGZGSsAQSxVTATyBeYupCBMH9EPuO-LYo1MH_WAUnArJfqlpyLtSOl3fA44FpjzwtkwOlqts5GJBputY4A-tpaepuKOENCTbqpman2Tnj8iWPDnail-naLuLtfm-QElC0Bq9QefP1o-sZgrPtbUczPLRktC97lvXbB9T9ySZPRJRknhzCdo"};
     const res = await fetch(`https://api.spotify.com/v1/tracks/${spotifyId}`, 
     {headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer BQDLwR-uoAymRCoIZGZGSsAQSxVTATyBeYupCBMH9EPuO-LYo1MH_WAUnArJfqlpyLtSOl3fA44FpjzwtkwOlqts5GJBputY4A-tpaepuKOENCTbqpman2Tnj8iWPDnail-naLuLtfm-QElC0Bq9QefP1o-sZgrPtbUczPLRktC97lvXbB9T9ySZPRJRknhzCdo"}})
+        Authorization: `Bearer ${localToken}`}})
     return res.json();
 }
 export default apiClient;
