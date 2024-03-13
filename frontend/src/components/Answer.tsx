@@ -2,6 +2,7 @@ export type ModalProps = {
   answer: string;
   artist: string;
   track: string;
+  albumCover: string;
   country: string;
 };
 
@@ -13,6 +14,7 @@ export default function Answer(props: ModalProps) {
       <div className="flex justify-center">
         <div className="card w-96 bg-base-100 shadow-xl">
           <div className="card-body">
+            <img src={props.albumCover} />
             <h2>That was </h2>
             <h2 className="card-title">
               {props.artist} - {props.track}
@@ -32,13 +34,12 @@ export default function Answer(props: ModalProps) {
     <div className="flex justify-center">
       <div className="card w-96 bg-base-100 shadow-xl">
         <div className="card-body">
+          <img src={props.albumCover} />
           <h2>That was </h2>
           <h2 className="card-title">
             {props.artist} - {props.track}
           </h2>
-          <h2 className="card-title">
-            From {props.country}
-          </h2>
+          <h2 className="card-title">From {props.country}</h2>
           <h2>From {props.country}</h2>
         </div>
         <figure>
