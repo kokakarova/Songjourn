@@ -38,53 +38,100 @@ export default function StartedQuiz() {
     return <Navigate to="/result" />;
   }
   return (
-    <div className="flex-container">
-      <div>Question {questionNumber}/5</div>
-      {answer === "correct" && (
-        <>
-          <div> CORRECT </div>
-          <div>{artist} - {trackTitle}</div>
-          <div>From {question![questionNumber - 1].correctAnswer}</div>
-        </>
-      )}
-      {answer === "incorrect" && (
-        <>
-          <div> Wrong </div>
-          <div>{artist} - {trackTitle}</div>
-          <div>From {question![questionNumber - 1].correctAnswer}</div>
-        </>
-      )}
-      <div> Where is this song from? </div>
-      <audio src={trackPreviewLink} controls></audio>
-      <button
-        className="button-answers"
-        onClick={(e) => evaluateAnswer(e.currentTarget.value)}
-        value={question![questionNumber - 1].option1}
-      >
-        {question![questionNumber - 1].option1}
-      </button>
-      <button
-        className="button-answers"
-        onClick={(e) => evaluateAnswer(e.currentTarget.value)}
-        value={question![questionNumber - 1].option2}
-      >
-        {question![questionNumber - 1].option2}
-      </button>
-      <button
-        className="button-answers"
-        onClick={(e) => evaluateAnswer(e.currentTarget.value)}
-        value={question![questionNumber - 1].option3}
-      >
-        {question![questionNumber - 1].option3}
-      </button>
-      <button
-        className="button-answers"
-        onClick={(e) => evaluateAnswer(e.currentTarget.value)}
-        value={question![questionNumber - 1].option4}
-      >
-        {question![questionNumber - 1].option4}
-      </button>
+    <div className="flex justify-center">
+    <div className="card w-96 bg-base-100 shadow-xl">
+      <div className="card-body items-center text-center">
+        <h2 className="card-title">Question {questionNumber}/5</h2>
+        <h3 className="card-title">Where is this song from</h3>
+      </div>
+      <figure className="px-10 pt-10">
+        <audio src={trackPreviewLink} controls className="rounded-xl" />
+      </figure>
+      <div className="card-body items-center text-center flex-col">
+        {/* <div className="card-actions"> */}
+          <button
+            className="btn btn-primary w-64"
+            onClick={(e) => evaluateAnswer(e.currentTarget.value)}
+            value={question![questionNumber - 1].option1}
+          >
+            {question![questionNumber - 1].option1}
+          </button>
+          <button
+            className="btn btn-primary w-64"
+            onClick={(e) => evaluateAnswer(e.currentTarget.value)}
+            value={question![questionNumber - 1].option2}
+          >
+            {question![questionNumber - 1].option2}
+          </button>
+          <button
+            className="btn btn-primary w-64"
+            onClick={(e) => evaluateAnswer(e.currentTarget.value)}
+            value={question![questionNumber - 1].option3}
+          >
+            {question![questionNumber - 1].option3}
+          </button>
+          <button
+            className="btn btn-primary w-64"
+            onClick={(e) => evaluateAnswer(e.currentTarget.value)}
+            value={question![questionNumber - 1].option4}
+          >
+            {question![questionNumber - 1].option4}
+          </button>
+        {/* </div> */}
+      </div>
     </div>
+    </div>
+    // <div className="flex-container">
+    //   <div>Question {questionNumber}/5</div>
+    //   {answer === "correct" && (
+    //     <>
+    //       <div> CORRECT </div>
+    //       <div>
+    //         {artist} - {trackTitle}
+    //       </div>
+    //       <div>From {question![questionNumber - 1].correctAnswer}</div>
+    //     </>
+    //   )}
+    //   {answer === "incorrect" && (
+    //     <>
+    //       <div> Wrong </div>
+    //       <div>
+    //         {artist} - {trackTitle}
+    //       </div>
+    //       <div>From {question![questionNumber - 1].correctAnswer}</div>
+    //     </>
+    //   )}
+    //   <div> Where is this song from? </div>
+    //   <audio src={trackPreviewLink} controls></audio>
+    //   <button
+    //     className="button-answers"
+    //     onClick={(e) => evaluateAnswer(e.currentTarget.value)}
+    //     value={question![questionNumber - 1].option1}
+    //   >
+    //     {question![questionNumber - 1].option1}
+    //   </button>
+    //   <button
+    //     className="button-answers"
+    //     onClick={(e) => evaluateAnswer(e.currentTarget.value)}
+    //     value={question![questionNumber - 1].option2}
+    //   >
+    //     {question![questionNumber - 1].option2}
+    //   </button>
+    //   <button
+    //     className="button-answers"
+    //     onClick={(e) => evaluateAnswer(e.currentTarget.value)}
+    //     value={question![questionNumber - 1].option3}
+    //   >
+    //     {question![questionNumber - 1].option3}
+    //   </button>
+    //   <button
+    //     className="button-answers"
+    //     onClick={(e) => evaluateAnswer(e.currentTarget.value)}
+    //     value={question![questionNumber - 1].option4}
+    //   >
+    //     {question![questionNumber - 1].option4}
+    //   </button>
+    // </div>
   );
 }
 
