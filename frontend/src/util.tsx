@@ -34,4 +34,5 @@ export const getTrackPreview = async (spotifyId: string) => {
         Authorization: `Bearer ${localToken}`}})
     return res.json();
 }
+
 export default apiClient;

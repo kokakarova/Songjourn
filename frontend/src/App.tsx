@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import "./App.css";
 import { RouterProvider } from "react-router-dom";
 import { setClientToken } from "./util";
 import Login from "./components/LogIn";
 import { router } from "./router";
+import "./output.css"
 
 function App() {
   const [token, setToken] = useState<string | null>("");

@@ -35,3 +35,4 @@ build/
 docker-compose.yml
 /data
 data
+.DS_Store
