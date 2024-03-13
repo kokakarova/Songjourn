@@ -2,6 +2,7 @@ import { Navigate, useLoaderData } from "react-router-dom";
 import { QuestionType } from "../types";
 import { getQuestions, getTrackPreview } from "../util";
 import { useEffect, useState } from "react";
+import Answer from "./Answer";
 
 export let result = 0;
 
@@ -12,6 +13,7 @@ export default function StartedQuiz() {
   const [trackPreviewLink, setTrackPreviewLink] = useState<string>();
   const [artist, setArtist] = useState<string>();
   const [trackTitle, setTrackTitle] = useState<string>();
+  const [showModal, setShowModal] = useState<boolean>(false);
 
   useEffect(() => {
     getTrackPreview(question[questionNumber - 1].spotifyId).then((data) => {
@@ -26,29 +28,44 @@ export default function StartedQuiz() {
     if (e === question![questionNumber - 1].correctAnswer) {
       result += 20;
       setAnswer("correct");
+      setShowModal(true);
     } else {
+      // (document.getElementById("incorrect") as HTMLDialogElement)!.showModal();
       setAnswer("incorrect");
+      setShowModal(true);
     }
     setTimeout(() => {
       setAnswer("");
       setQuestionNumber(turnSet);
-    }, 2500);
+      setShowModal(false);
+    }, 4000);
   };
   if (questionNumber > 5) {
     return <Navigate to="/result" />;
   }
+  if (answer === "correct" || answer === "incorrect") {
+    // (document.getElementById("correct") as HTMLDialogElement)!.showModal();
+  }
   return (
-    <div className="flex justify-center">
-    <div className="card w-96 bg-base-100 shadow-xl">
-      <div className="card-body items-center text-center">
-        <h2 className="card-title">Question {questionNumber}/5</h2>
-        <h3 className="card-title">Where is this song from</h3>
-      </div>
-      <figure className="px-10 pt-10">
-        <audio src={trackPreviewLink} controls className="rounded-xl" />
-      </figure>
-      <div className="card-body items-center text-center flex-col">
-        {/* <div className="card-actions"> */}
+    <>
+    {showModal && (
+      <Answer 
+      answer={answer as string}
+      artist={artist as string}
+      track={trackTitle as string}
+      country={question![questionNumber - 1].correctAnswer}/>
+    )}
+   { !showModal && <div className="flex justify-center">
+      <div className="card w-96 bg-base-100 shadow-xl">
+        <div className="card-body items-center text-center">
+          <h2 className="card-title">Question {questionNumber}/5</h2>
+          <h3 className="card-title">Where is this song from</h3>
+        </div>
+        <figure className="px-10 pt-10">
+          <audio src={trackPreviewLink} controls className="rounded-xl" />
+        </figure>
+        <div className="card-body items-center text-center flex-col">
+          {/* <div className="card-actions"> */}
           <button
             className="btn btn-primary w-64"
             onClick={(e) => evaluateAnswer(e.currentTarget.value)}
@@ -77,10 +94,11 @@ export default function StartedQuiz() {
           >
             {question![questionNumber - 1].option4}
           </button>
-        {/* </div> */}
+          {/* </div> */}
+        </div>
       </div>
-    </div>
-    </div>
+    </div>}
+    </>
     // <div className="flex-container">
     //   <div>Question {questionNumber}/5</div>
     //   {answer === "correct" && (
