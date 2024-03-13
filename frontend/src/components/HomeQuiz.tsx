@@ -6,16 +6,19 @@ export type HomeQuizProps = {
 
 export const HomeQuiz = () => {
   // const [question, setQuestion] = useState<QuestionType>();
-  
+
   return (
-    <div className="flex-container">
-      <div>Hi user</div>
-      <div>We have a quiz for you</div>
-      <div>Guess the song's origin country</div>
-      <button /*onClick={props!.handleclick}*/>
-        <Link to="/questions">Start quiz</Link>
-      </button>
-      <div>Each correct answer grants you 20 points</div>
+    <div className="hero min-h-screen bg-base-200">
+      <div className="hero-content text-center">
+        <div className="max-w-md">
+          <h1 className="text-2xl font-bold">Hello there</h1>
+          <p className="py-6">We have one quiz for you</p>
+          <p className="py-6 text-2xl">Guess the song's origin country</p>
+          <button className="btn btn-primary">
+            <Link to="/questions">Start quiz</Link>
+          </button>
+        </div>
+      </div>
     </div>
   );
-}
+};

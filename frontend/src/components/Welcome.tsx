@@ -2,14 +2,19 @@ import { Link } from "react-router-dom";
 
 export const Welcome = () => {
   return (
-    <>
-      <h2>Welcome User</h2>
-      <div>
-        Currently we have a quiz feature ready. More goodies are comming soon
+    <div className="hero min-h-screen bg-base-100">
+      <div className="hero-content text-center">
+        <div className="max-w-md">
+          <h1 className="text-5xl font-bold">Welcome User</h1>
+          <p className="py-6">
+            Currently we have a quiz feature ready. More goodies are comming
+            soon
+          </p>
+          <button className="btn btn-primary text-secondary">
+            <Link to="/homequiz">Go To Quiz</Link>
+          </button>
+        </div>
       </div>
-      <button>
-        <Link to="/homequiz">Go To Quiz</Link>
-      </button>
-    </>
+    </div>
   );
 };
