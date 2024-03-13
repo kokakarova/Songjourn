@@ -1,4 +1,4 @@
-import { Navigate, Outlet, useLoaderData } from "react-router-dom";
+import { Navigate, useLoaderData } from "react-router-dom";
 import { QuestionType } from "../types";
 import { getQuestions, getTrackPreview } from "../util";
 import { useEffect, useState } from "react";
