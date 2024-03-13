@@ -19,7 +19,7 @@ export default function StartedQuiz() {
   useEffect(() => {
     getTrackPreview(question[questionNumber - 1].spotifyId).then((data) => {
       console.log(data);
-      setAlbumCover(data.album.images[0].url)
+      setAlbumCover(data.album.images[0].url);
       setArtist(data.artists[0].name);
       setTrackTitle(data.name);
       setTrackPreviewLink(data.preview_url);
@@ -33,7 +33,6 @@ export default function StartedQuiz() {
       setAnswer("correct");
       setShowModal(true);
     } else {
-      // (document.getElementById("incorrect") as HTMLDialogElement)!.showModal();
       setAnswer("incorrect");
       setShowModal(true);
     }
@@ -47,7 +46,6 @@ export default function StartedQuiz() {
     return <Navigate to="/result" />;
   }
   if (answer === "correct" || answer === "incorrect") {
-    // (document.getElementById("correct") as HTMLDialogElement)!.showModal();
   }
   return (
     <>
@@ -101,63 +99,12 @@ export default function StartedQuiz() {
               </button>
             </div>
           </div>
-          <button className="btn btn-primary w-64">
+          <button className="btn btn-neutral w-64">
             <Link to="/result">Leave Quiz</Link>
           </button>
         </div>
       )}
     </>
-    // <div className="flex-container">
-    //   <div>Question {questionNumber}/5</div>
-    //   {answer === "correct" && (
-    //     <>
-    //       <div> CORRECT </div>
-    //       <div>
-    //         {artist} - {trackTitle}
-    //       </div>
-    //       <div>From {question![questionNumber - 1].correctAnswer}</div>
-    //     </>
-    //   )}
-    //   {answer === "incorrect" && (
-    //     <>
-    //       <div> Wrong </div>
-    //       <div>
-    //         {artist} - {trackTitle}
-    //       </div>
-    //       <div>From {question![questionNumber - 1].correctAnswer}</div>
-    //     </>
-    //   )}
-    //   <div> Where is this song from? </div>
-    //   <audio src={trackPreviewLink} controls></audio>
-    //   <button
-    //     className="button-answers"
-    //     onClick={(e) => evaluateAnswer(e.currentTarget.value)}
-    //     value={question![questionNumber - 1].option1}
-    //   >
-    //     {question![questionNumber - 1].option1}
-    //   </button>
-    //   <button
-    //     className="button-answers"
-    //     onClick={(e) => evaluateAnswer(e.currentTarget.value)}
-    //     value={question![questionNumber - 1].option2}
-    //   >
-    //     {question![questionNumber - 1].option2}
-    //   </button>
-    //   <button
-    //     className="button-answers"
-    //     onClick={(e) => evaluateAnswer(e.currentTarget.value)}
-    //     value={question![questionNumber - 1].option3}
-    //   >
-    //     {question![questionNumber - 1].option3}
-    //   </button>
-    //   <button
-    //     className="button-answers"
-    //     onClick={(e) => evaluateAnswer(e.currentTarget.value)}
-    //     value={question![questionNumber - 1].option4}
-    //   >
-    //     {question![questionNumber - 1].option4}
-    //   </button>
-    // </div>
   );
 }
 

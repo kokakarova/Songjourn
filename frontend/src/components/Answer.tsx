@@ -7,7 +7,6 @@ export type ModalProps = {
 };
 
 export default function Answer(props: ModalProps) {
-  console.log("Modal called");
 
   if (props.answer === "correct") {
     return (
@@ -49,13 +48,3 @@ export default function Answer(props: ModalProps) {
     </div>
   );
 }
-
-// <div id="correct" className="modal">
-//   <div className="modal-box">
-//     <h3 className="font-bold text-lg">Correct/Incorrect</h3>
-//     <p className="py-4">
-//       That was {props.artist} - {props.track}
-//     </p>
-//     <p className="py-4">From {props.country}</p>
-//   </div>
-// </div>
