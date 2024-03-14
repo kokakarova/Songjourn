@@ -4,9 +4,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/songjourndb
     username: ${POSTGRES_USER_NAME}
-#    username: songjourn
     password: ${POSTGRES_PASSWORD}
-#    password: secret
   jpa:
     defer-datasource-initialization: true
     hibernate:

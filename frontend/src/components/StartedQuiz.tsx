@@ -21,7 +21,7 @@ export default function StartedQuiz() {
         setArtist(data.artists[0].name);
         setTrackTitle(data.name);
         setTrackPreviewLink(data.preview_url);
-      })
+      });
     }
   }, [questionNumber]);
 
@@ -57,51 +57,64 @@ export default function StartedQuiz() {
       )}
       {!showAnswer && (
         <>
-          <div className="flex justify-center">
-            <div className="card w-96 bg-base-100 lg:shadow-xl lg:bg-gradient-to-br">
-              <div className="card-body items-center text-center">
-                <h2 className="card-title">Question {questionNumber}/5</h2>
-                <h3 className="card-title">Where is this song from</h3>
+          <div
+            className="hero min-h-screen bg-cover bg-opacity-70"
+            style={{ backgroundImage: "url(bg.png)" }}
+          >
+            <div className="hero-overlay bg-opacity-60 bg-cover">
+              <div className="flex justify-center">
+                <div className="card w-96 bg-base-100 lg:shadow-xl lg:bg-gradient-to-br m-3">
+                  <div className="card-body items-center text-center">
+                    <h2 className="card-title">Question {questionNumber}/5</h2>
+                    <h3 className="card-title">Where is this song from?</h3>
+                  </div>
+                  <figure className="px-10 pt-10">
+                    <audio
+                      src={trackPreviewLink}
+                      controls
+                      className="rounded-xl bg-primary"
+                    />
+                  </figure>
+                  <div className="card-body items-center text-center flex-col">
+                    <button
+                      className="btn btn-base w-64 xl:w-80 h-14 text-xl xl:text-2xl bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-pink-500 hover:to-yellow-500"
+                      onClick={(e) => evaluateAnswer(e.currentTarget.value)}
+                      value={question![questionNumber - 1].option1}
+                    >
+                      {question![questionNumber - 1].option1}
+                    </button>
+                    <button
+                      className="btn btn-base w-64 xl:w-80 h-14 text-xl xl:text-2xl bg-gradient-to-r from-sky-500 to-indigo-500 hover:from-pink-500 hover:to-yellow-500"
+                      onClick={(e) => evaluateAnswer(e.currentTarget.value)}
+                      value={question![questionNumber - 1].option2}
+                    >
+                      {question![questionNumber - 1].option2}
+                    </button>
+                    <button
+                      className="btn btn-base w-64 xl:w-80 h-14 text-xl xl:text-2xl bg-gradient-to-r from-indigo-500 to-sky-500 hover:from-pink-500 hover:to-yellow-500"
+                      onClick={(e) => evaluateAnswer(e.currentTarget.value)}
+                      value={question![questionNumber - 1].option3}
+                    >
+                      {question![questionNumber - 1].option3}
+                    </button>
+                    <button
+                      className="btn btn-base w-64 xl:w-80 h-14 text-xl xl:text-2xl bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-pink-500 hover:to-yellow-500"
+                      onClick={(e) => evaluateAnswer(e.currentTarget.value)}
+                      value={question![questionNumber - 1].option4}
+                    >
+                      {question![questionNumber - 1].option4}
+                    </button>
+                  </div>
+                </div>
               </div>
-              <figure className="px-10 pt-10">
-                <audio src={trackPreviewLink} controls className="rounded-xl bg-primary" />
-              </figure>
-              <div className="card-body items-center text-center flex-col">
-                <button
-                  className="btn btn-base w-64 xl:w-80 h-14 text-xl xl:text-2xl bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-pink-500 hover:to-yellow-500"
-                  onClick={(e) => evaluateAnswer(e.currentTarget.value)}
-                  value={question![questionNumber - 1].option1}
-                >
-                  {question![questionNumber - 1].option1}
-                </button>
-                <button
-                  className="btn btn-base w-64 xl:w-80 h-14 text-xl xl:text-2xl bg-gradient-to-r from-sky-500 to-indigo-500 hover:from-pink-500 hover:to-yellow-500"
-                  onClick={(e) => evaluateAnswer(e.currentTarget.value)}
-                  value={question![questionNumber - 1].option2}
-                >
-                  {question![questionNumber - 1].option2}
-                </button>
-                <button
-                  className="btn btn-base w-64 xl:w-80 h-14 text-xl xl:text-2xl bg-gradient-to-r from-indigo-500 to-sky-500 hover:from-pink-500 hover:to-yellow-500"
-                  onClick={(e) => evaluateAnswer(e.currentTarget.value)}
-                  value={question![questionNumber - 1].option3}
-                >
-                  {question![questionNumber - 1].option3}
-                </button>
-                <button
-                  className="btn btn-base w-64 xl:w-80 h-14 text-xl xl:text-2xl bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-pink-500 hover:to-yellow-500"
-                  onClick={(e) => evaluateAnswer(e.currentTarget.value)}
-                  value={question![questionNumber - 1].option4}
-                >
-                  {question![questionNumber - 1].option4}
-                </button>
+              <div className="flex-col items-center text-center my-10">
+                <Link to="/result">
+                  <button className="btn btn-neutral w-64 xl:text-xl drop-shadow">
+                    Leave Quiz
+                  </button>
+                </Link>
               </div>
             </div>
-          </div>
-          <div className="flex-col items-center text-center my-10">
-            <Link to="/result">
-              <button className="btn btn-neutral w-64 xl:text-xl">Leave Quiz</button>
-            </Link>
           </div>
         </>
       )}
@@ -109,7 +122,6 @@ export default function StartedQuiz() {
   );
 }
 
-export const questionLoader = async () => {
-  const res = await getQuestions();
-  return res.json();
+export const questionLoader = () => {
+  return getQuestions();
 };

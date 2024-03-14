@@ -2,7 +2,11 @@ import { loginEndpoint } from "../util";
 
 export default function Login() {
   return (
-    <div className="hero min-h-screen bg-neutral">
+    <div
+      className="hero min-h-screen bg-neutral"
+      style={{ backgroundImage: "url(bg.png)" }}
+    >
+      <div className="hero-overlay bg-opacity-60"></div>
       <div className="hero-content flex-col lg:flex-row">
         <img
           src="songjourn-full.png"
@@ -14,7 +18,9 @@ export default function Login() {
             To use this app you need to log in with a premium Spotify account
           </p>
           <a href={loginEndpoint}>
-            <button className="btn btn-secondary place-self-center'">Login with Spotify</button>
+            <button className="btn btn-secondary place-self-center'">
+              Login with Spotify
+            </button>
           </a>
         </div>
       </div>
