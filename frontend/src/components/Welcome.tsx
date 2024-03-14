@@ -6,12 +6,13 @@ export const Welcome = () => {
       <div className="hero-content text-center">
         <div className="max-w-lg">
           <h1 className="text-5xl font-bold">Welcome to Songjour</h1>
-          <p className="py-6">
-            Currently we have a quiz feature ready
-          </p>
-          <Link to="/homequiz">
-            <button className="btn btn-secondary text-base">Go To Quiz</button>
+          <h1 className="text-2xl font-bold m-10">We have a quiz for you</h1>
+          <Link to="/questions">
+            <button className="btn btn-secondary text-1xl">
+              Guess the origin country of the song
+            </button>
           </Link>
+          <p className="py-6 text-1xl">click to start the quiz</p>
         </div>
       </div>
     </div>

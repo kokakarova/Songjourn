@@ -4,8 +4,6 @@ import { getQuestions, getTrackPreview, incrementResult } from "../util";
 import { useEffect, useState } from "react";
 import Answer from "./Answer";
 
-export let result = 0;
-
 export default function StartedQuiz() {
   const question: QuestionType[] = useLoaderData() as QuestionType[];
   const [questionNumber, setQuestionNumber] = useState<number>(1);
@@ -15,21 +13,21 @@ export default function StartedQuiz() {
   const [trackTitle, setTrackTitle] = useState<string>();
   const [showAnswer, setShowAnswer] = useState<boolean>(false);
   const [albumcover, setAlbumCover] = useState<string>();
-  const quizQuestion = questionNumber - 1;
 
   useEffect(() => {
-    getTrackPreview(question[quizQuestion].spotifyId).then((data) => {
-      setAlbumCover(data.album.images[0].url);
-      setArtist(data.artists[0].name);
-      setTrackTitle(data.name);
-      setTrackPreviewLink(data.preview_url);
-    });
+    if (questionNumber <= 5) {
+      getTrackPreview(question[questionNumber - 1].spotifyId).then((data) => {
+        setAlbumCover(data.album.images[0].url);
+        setArtist(data.artists[0].name);
+        setTrackTitle(data.name);
+        setTrackPreviewLink(data.preview_url);
+      });
+    }
   }, [questionNumber]);
 
   const evaluateAnswer = (e: string) => {
     const turnSet = questionNumber + 1;
-    // setTrackPreviewLink("");
-    if (e === question![quizQuestion].correctAnswer) {
+    if (e === question![questionNumber - 1].correctAnswer) {
       incrementResult(20);
       setAnswer("correct");
       setShowAnswer(true);
@@ -46,8 +44,6 @@ export default function StartedQuiz() {
   if (questionNumber > 5) {
     return <Navigate to="/result" />;
   }
-  if (answer === "correct" || answer === "incorrect") {
-  }
   return (
     <>
       {showAnswer && (
@@ -56,7 +52,7 @@ export default function StartedQuiz() {
           artist={artist as string}
           track={trackTitle as string}
           albumCover={albumcover as string}
-          country={question![quizQuestion].correctAnswer}
+          country={question![questionNumber - 1].correctAnswer}
         />
       )}
       {!showAnswer && (
@@ -74,30 +70,30 @@ export default function StartedQuiz() {
                 <button
                   className="btn btn-base w-64 h-14 bg-gradient-to-r from-cyan-500 to-blue-500 text-xl hover:from-pink-500 hover:to-yellow-500"
                   onClick={(e) => evaluateAnswer(e.currentTarget.value)}
-                  value={question![quizQuestion].option1}
+                  value={question![questionNumber - 1].option1}
                 >
-                  {question![quizQuestion].option1}
+                  {question![questionNumber - 1].option1}
                 </button>
                 <button
                   className="btn btn-base w-64 h-14 bg-gradient-to-r from-sky-500 to-indigo-500 text-xl hover:from-pink-500 hover:to-yellow-500"
                   onClick={(e) => evaluateAnswer(e.currentTarget.value)}
-                  value={question![quizQuestion].option2}
+                  value={question![questionNumber - 1].option2}
                 >
-                  {question![quizQuestion].option2}
+                  {question![questionNumber - 1].option2}
                 </button>
                 <button
                   className="btn btn-base w-64 h-14 bg-gradient-to-r from-indigo-500 to-sky-500 text-xl hover:from-pink-500 hover:to-yellow-500"
                   onClick={(e) => evaluateAnswer(e.currentTarget.value)}
-                  value={question![quizQuestion].option3}
+                  value={question![questionNumber - 1].option3}
                 >
-                  {question![quizQuestion].option3}
+                  {question![questionNumber - 1].option3}
                 </button>
                 <button
                   className="btn btn-base w-64 h-14 bg-gradient-to-r from-blue-500 to-cyan-500 text-xl hover:from-pink-500 hover:to-yellow-500"
                   onClick={(e) => evaluateAnswer(e.currentTarget.value)}
-                  value={question![quizQuestion].option4}
+                  value={question![questionNumber - 1].option4}
                 >
-                  {question![quizQuestion].option4}
+                  {question![questionNumber - 1].option4}
                 </button>
               </div>
             </div>

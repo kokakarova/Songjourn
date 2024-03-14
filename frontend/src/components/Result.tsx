@@ -17,7 +17,7 @@ export default function Result() {
             Your score is {getResult()}/100
           </h2>
           <h1 className="mb-5 text-2xl">Thanks for playing</h1>
-          <Link to="/homequiz">
+          <Link to="/questions">
             <button onClick={handleClick} className="btn btn-secondary m-1.5">New Quiz</button>
           </Link>
         </div>
