@@ -35,4 +35,18 @@ export const getTrackPreview = async (spotifyId: string) => {
     return res.json();
 }
 
+let result = 0;
+
+export const incrementResult = (n: number) => {
+    result += n;
+}
+
+export const getResult = () => {
+    return result;
+}
+
+export const resetResult = () => {
+    result = 0;
+}
+
 export default apiClient;

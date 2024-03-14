@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
-import { result } from "./StartedQuiz";
+import { getResult, resetResult } from "../util";
 
 export default function Result() {
+  const handleClick = () => {
+    resetResult();
+  }
   return (
     <div
       className="hero min-h-screen"
@@ -11,14 +14,14 @@ export default function Result() {
       <div className="hero-content text-center text-neutral-content">
         <div className="max-w-md">
           <h2 className="mb-5 text-5xl font-bold">
-            Your score is {result}/100
+            Your score is {getResult()}/100
           </h2>
           <h1 className="mb-5">Thanks for playing</h1>
           <Link to="/">
-            <button className="btn btn-primary m-1.5">Home</button>
+            <button onClick={handleClick} className="btn btn-primary m-1.5">Home</button>
           </Link>
           <Link to="/homequiz">
-            <button className="btn btn-primary m-1.5">New Quiz</button>
+            <button onClick={handleClick} className="btn btn-primary m-1.5">New Quiz</button>
           </Link>
         </div>
       </div>

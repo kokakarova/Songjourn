@@ -10,9 +10,9 @@ export default function Answer(props: ModalProps) {
   if (props.answer === "correct") {
     return (
       <div className="flex justify-center">
-        <div className="card w-100 min-w-100 bg-base-100 shadow-xl">
+        <div className="card w-100 h-50 bg-base-100 shadow-xl">
           <figure className="max-w-xs max-h-sm place-self-center">
-            <img src="correct.jpeg" />
+            <img src="correct.png"/>
           </figure>
           <div className="card-body flex-row">
             <div className="avatar">
@@ -35,9 +35,9 @@ export default function Answer(props: ModalProps) {
   }
   return (
     <div className="flex justify-center">
-      <div className="card w-100 min-w-100 bg-base-100 shadow-xl">
+      <div className="card w-100 h-50 bg-base-100 shadow-xl">
         <figure className="max-w-xs max-h-sm place-self-center">
-          <img src="incorrect.jpeg" />
+          <img src="incorrect.png"/>
         </figure>
         <div className="card-body flex-row">
           <div className="avatar">

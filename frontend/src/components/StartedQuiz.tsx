@@ -1,6 +1,6 @@
 import { Link, Navigate, useLoaderData } from "react-router-dom";
 import { QuestionType } from "../types";
-import { getQuestions, getTrackPreview } from "../util";
+import { getQuestions, getTrackPreview, incrementResult } from "../util";
 import { useEffect, useState } from "react";
 import Answer from "./Answer";
 
@@ -28,7 +28,7 @@ export default function StartedQuiz() {
   const evaluateAnswer = (e: string) => {
     const turnSet = questionNumber + 1;
     if (e === question![questionNumber - 1].correctAnswer) {
-      result += 20;
+      incrementResult(20);
       setAnswer("correct");
       setShowModal(true);
     } else {
