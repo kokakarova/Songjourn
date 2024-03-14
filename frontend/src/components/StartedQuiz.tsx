@@ -72,28 +72,28 @@ export default function StartedQuiz() {
               </figure>
               <div className="card-body items-center text-center flex-col">
                 <button
-                  className="btn btn-base w-64 h-14 bg-gradient-to-r from-cyan-500 to-blue-500 text-xl"
+                  className="btn btn-base w-64 h-14 bg-gradient-to-r from-cyan-500 to-blue-500 text-xl hover:from-pink-500 hover:to-yellow-500"
                   onClick={(e) => evaluateAnswer(e.currentTarget.value)}
                   value={question![quizQuestion].option1}
                 >
                   {question![quizQuestion].option1}
                 </button>
                 <button
-                  className="btn btn-base w-64 h-14 bg-gradient-to-r from-sky-500 to-indigo-500 text-xl"
+                  className="btn btn-base w-64 h-14 bg-gradient-to-r from-sky-500 to-indigo-500 text-xl hover:from-pink-500 hover:to-yellow-500"
                   onClick={(e) => evaluateAnswer(e.currentTarget.value)}
                   value={question![quizQuestion].option2}
                 >
                   {question![quizQuestion].option2}
                 </button>
                 <button
-                  className="btn btn-base w-64 h-14 bg-gradient-to-r from-violet-500 to-fuchsia-500 text-xl"
+                  className="btn btn-base w-64 h-14 bg-gradient-to-r from-indigo-500 to-sky-500 text-xl hover:from-pink-500 hover:to-yellow-500"
                   onClick={(e) => evaluateAnswer(e.currentTarget.value)}
                   value={question![quizQuestion].option3}
                 >
                   {question![quizQuestion].option3}
                 </button>
                 <button
-                  className="btn btn-base w-64 h-14 bg-gradient-to-r from-purple-500 to-pink-500 text-xl"
+                  className="btn btn-base w-64 h-14 bg-gradient-to-r from-blue-500 to-cyan-500 text-xl hover:from-pink-500 hover:to-yellow-500"
                   onClick={(e) => evaluateAnswer(e.currentTarget.value)}
                   value={question![quizQuestion].option4}
                 >

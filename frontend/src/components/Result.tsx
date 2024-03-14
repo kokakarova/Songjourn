@@ -13,13 +13,10 @@ export default function Result() {
       <div className="hero-overlay bg-opacity-60"></div>
       <div className="hero-content text-center text-neutral-content">
         <div className="max-w-md">
-          <h2 className="mb-5 text-5xl font-bold">
+          <h2 className="mb-5 text-3xl font-bold">
             Your score is {getResult()}/100
           </h2>
-          <h1 className="mb-5">Thanks for playing</h1>
-          <Link to="/">
-            <button onClick={handleClick} className="btn btn-primary m-1.5">Home</button>
-          </Link>
+          <h1 className="mb-5 text-2xl">Thanks for playing</h1>
           <Link to="/homequiz">
             <button onClick={handleClick} className="btn btn-primary m-1.5">New Quiz</button>
           </Link>
