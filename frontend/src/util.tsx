@@ -1,7 +1,13 @@
 import axios from "axios";
 
 // fetching from backend
-export const getQuestions = () => fetch("http://localhost:8011/api");
+export const getQuestions = async () => {
+    const res = await fetch("http://localhost:8011/api")
+    if (res.status === 404) {
+        throw new Response("Not Found", { status: 404 });
+      }
+      return res.json();
+};
 
 // fetching from spotify
 

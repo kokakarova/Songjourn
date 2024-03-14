@@ -21,7 +21,7 @@ export default function StartedQuiz() {
         setArtist(data.artists[0].name);
         setTrackTitle(data.name);
         setTrackPreviewLink(data.preview_url);
-      });
+      })
     }
   }, [questionNumber]);
 
