@@ -8,7 +8,6 @@ export default function Result() {
   return (
     <div
       className="hero min-h-screen"
-      // style={{ backgroundImage: "url(eric-nopanen-8e0EHPUx3Mo-unsplash.jpg)"}}
       style={{ backgroundImage: "url(bg.png)"}}
     >
       <div className="hero-overlay bg-opacity-60"></div>
