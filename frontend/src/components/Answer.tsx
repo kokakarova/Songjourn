@@ -14,15 +14,20 @@ export default function Answer(props: ModalProps) {
           <figure className="max-w-xs max-h-sm place-self-center">
             <img src="correct.jpeg" />
           </figure>
-          <div className="card-body">
-            <img src={props.albumCover} />
-            <h2>That was </h2>
-            <h2 className="card-title">
-              {props.artist} - {props.track}
-            </h2>
-            <h2 className="className=" card-title>
-              From {props.country}
-            </h2>
+          <div className="card-body flex-row">
+            <div className="avatar">
+              <div className="w-32 rounded">
+                <img src={props.albumCover} />
+              </div>
+            </div>
+            <div className="flex-col">
+              <h2>That was </h2>
+              <h2 className="card-title">
+                {props.artist} - {props.track}
+              </h2>
+              <h2>From </h2>
+              <h2 className="card-title"> {props.country}</h2>
+            </div>
           </div>
         </div>
       </div>
@@ -34,7 +39,7 @@ export default function Answer(props: ModalProps) {
         <figure className="max-w-xs max-h-sm place-self-center">
           <img src="incorrect.jpeg" />
         </figure>
-        <div className="card-body  flex-row">
+        <div className="card-body flex-row">
           <div className="avatar">
             <div className="w-32 rounded">
               <img src={props.albumCover} />

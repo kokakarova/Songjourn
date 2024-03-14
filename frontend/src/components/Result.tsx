@@ -14,12 +14,12 @@ export default function Result() {
             Your score is {result}/100
           </h2>
           <h1 className="mb-5">Thanks for playing</h1>
-          <button className="btn btn-primary m-1.5">
-            <Link to="/">Home</Link>
-          </button>
-          <button className="btn btn-primary m-1.5">
-            <Link to="/homequiz">New Quiz</Link>
-          </button>
+          <Link to="/">
+            <button className="btn btn-primary m-1.5">Home</button>
+          </Link>
+          <Link to="/homequiz">
+            <button className="btn btn-primary m-1.5">New Quiz</button>
+          </Link>
         </div>
       </div>
     </div>

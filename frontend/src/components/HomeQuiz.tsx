@@ -11,9 +11,9 @@ export const HomeQuiz = () => {
         <div className="max-w-md">
           <h1 className="text-5xl font-bold">We have one quiz for you</h1>
           <p className="py-6 text-2xl">Guess the song's origin country</p>
-          <button className="btn btn-primary">
-            <Link to="/questions">Start quiz</Link>
-          </button>
+          <Link to="/questions">
+            <button className="btn btn-primary">Start quiz</button>
+          </Link>
         </div>
       </div>
     </div>

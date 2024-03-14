@@ -18,7 +18,6 @@ export default function StartedQuiz() {
 
   useEffect(() => {
     getTrackPreview(question[questionNumber - 1].spotifyId).then((data) => {
-      console.log(data);
       setAlbumCover(data.album.images[0].url);
       setArtist(data.artists[0].name);
       setTrackTitle(data.name);
@@ -107,10 +106,9 @@ export default function StartedQuiz() {
             </div>
           </div>
           <div className="flex-col items-center text-center my-10">
-          <Link to="/result">
-            <button className="btn btn-neutral w-64">
-              Leave Quiz
-            </button></Link>
+            <Link to="/result">
+              <button className="btn btn-neutral w-64">Leave Quiz</button>
+            </Link>
           </div>
         </>
       )}

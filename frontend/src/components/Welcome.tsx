@@ -10,9 +10,9 @@ export const Welcome = () => {
             Currently we have a quiz feature ready. More goodies are comming
             soon
           </p>
-          <button className="btn btn-primary text-base">
-            <Link to="/homequiz">Go To Quiz</Link>
-          </button>
+          <Link to="/homequiz">
+            <button className="btn btn-primary text-base">Go To Quiz</button>
+          </Link>
         </div>
       </div>
     </div>
