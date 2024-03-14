@@ -1,10 +1,11 @@
+import { Link } from "react-router-dom";
 import "../output.css";
 
 export default function Navbar() {
   return (
     <div className="navbar bg-primary">
       <div className="flex-1">
-        <a className="btn btn-ghost text-xl text-secondary">Songjourn</a>
+        <a className="btn btn-ghost text-xl text-secondary"><Link to="/">Songjourn</Link></a>
       </div>
       {/* <div className="flex-none gap-2">
         <div className="dropdown dropdown-end">
