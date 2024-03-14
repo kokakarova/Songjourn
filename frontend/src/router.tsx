@@ -9,6 +9,7 @@ import { HomeQuiz } from "./components/HomeQuiz";
 import RootLayout from "./layouts/RootLayout";
 import StartedQuiz from "./components/StartedQuiz";
 import Result from "./components/Result";
+import NotFound from "./components/NotFound";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -21,6 +22,7 @@ export const router = createBrowserRouter(
         loader={questionLoader}>
       </Route>
       <Route path="/result" element={<Result />}></Route>
+      <Route path="*" element={<NotFound />}></Route>
     </Route>
   )
 );

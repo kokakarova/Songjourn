@@ -11,7 +11,7 @@ export default function Navbar() {
     <div className="navbar bg-gradient-to-r from-primary to-secondary text-xl">
       <div className="flex-1">
         <Link to="/">
-          <a onClick={handleClick} className="btn btn-ghost text-xl text-secondary">Songjourn</a>
+          <button onClick={handleClick} className="btn btn-ghost text-xl text-secondary">Songjourn</button>
         </Link>
       </div>
     </div>

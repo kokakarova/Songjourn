@@ -18,7 +18,7 @@ export default function Result() {
           </h2>
           <h1 className="mb-5 text-2xl">Thanks for playing</h1>
           <Link to="/homequiz">
-            <button onClick={handleClick} className="btn btn-primary m-1.5">New Quiz</button>
+            <button onClick={handleClick} className="btn btn-secondary m-1.5">New Quiz</button>
           </Link>
         </div>
       </div>

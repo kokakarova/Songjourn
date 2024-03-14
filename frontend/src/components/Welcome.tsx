@@ -7,8 +7,7 @@ export const Welcome = () => {
         <div className="max-w-lg">
           <h1 className="text-5xl font-bold">Welcome to Songjour</h1>
           <p className="py-6">
-            Currently we have a quiz feature ready. More goodies are comming
-            soon
+            Currently we have a quiz feature ready
           </p>
           <Link to="/homequiz">
             <button className="btn btn-secondary text-base">Go To Quiz</button>
