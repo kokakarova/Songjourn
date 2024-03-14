@@ -12,7 +12,7 @@ export const HomeQuiz = () => {
           <h1 className="text-5xl font-bold">We have one quiz for you</h1>
           <p className="py-6 text-2xl">Guess the song's origin country</p>
           <Link to="/questions">
-            <button className="btn btn-primary">Start quiz</button>
+            <button className="btn btn-secondary">Start quiz</button>
           </Link>
         </div>
       </div>

@@ -13,11 +13,12 @@ export default function StartedQuiz() {
   const [trackPreviewLink, setTrackPreviewLink] = useState<string>();
   const [artist, setArtist] = useState<string>();
   const [trackTitle, setTrackTitle] = useState<string>();
-  const [showModal, setShowModal] = useState<boolean>(false);
+  const [showAnswer, setShowAnswer] = useState<boolean>(false);
   const [albumcover, setAlbumCover] = useState<string>();
+  const quizQuestion = questionNumber - 1;
 
   useEffect(() => {
-    getTrackPreview(question[questionNumber - 1].spotifyId).then((data) => {
+    getTrackPreview(question[quizQuestion].spotifyId).then((data) => {
       setAlbumCover(data.album.images[0].url);
       setArtist(data.artists[0].name);
       setTrackTitle(data.name);
@@ -27,18 +28,19 @@ export default function StartedQuiz() {
 
   const evaluateAnswer = (e: string) => {
     const turnSet = questionNumber + 1;
-    if (e === question![questionNumber - 1].correctAnswer) {
+    // setTrackPreviewLink("");
+    if (e === question![quizQuestion].correctAnswer) {
       incrementResult(20);
       setAnswer("correct");
-      setShowModal(true);
+      setShowAnswer(true);
     } else {
       setAnswer("incorrect");
-      setShowModal(true);
+      setShowAnswer(true);
     }
     setTimeout(() => {
       setAnswer("");
       setQuestionNumber(turnSet);
-      setShowModal(false);
+      setShowAnswer(false);
     }, 5000);
   };
   if (questionNumber > 5) {
@@ -48,59 +50,54 @@ export default function StartedQuiz() {
   }
   return (
     <>
-      {showModal && (
+      {showAnswer && (
         <Answer
           answer={answer as string}
           artist={artist as string}
           track={trackTitle as string}
           albumCover={albumcover as string}
-          country={question![questionNumber - 1].correctAnswer}
+          country={question![quizQuestion].correctAnswer}
         />
       )}
-      {!showModal && (
+      {!showAnswer && (
         <>
           <div className="flex justify-center">
-            <div className="card w-96 bg-base-100 shadow-xl">
+            <div className="card w-96 bg-base-100 md:shadow-xl lg:shadow-xl lg:bg-gradient-to-br">
               <div className="card-body items-center text-center">
                 <h2 className="card-title">Question {questionNumber}/5</h2>
                 <h3 className="card-title">Where is this song from</h3>
               </div>
               <figure className="px-10 pt-10">
-                <audio
-                  src={trackPreviewLink}
-                  controls
-                  className="rounded-xl"
-                  autoPlay
-                />
+                <audio src={trackPreviewLink} controls className="rounded-xl" />
               </figure>
               <div className="card-body items-center text-center flex-col">
                 <button
-                  className="btn btn-primary w-64"
+                  className="btn btn-base w-64 h-14 bg-gradient-to-r from-cyan-500 to-blue-500 text-xl"
                   onClick={(e) => evaluateAnswer(e.currentTarget.value)}
-                  value={question![questionNumber - 1].option1}
+                  value={question![quizQuestion].option1}
                 >
-                  {question![questionNumber - 1].option1}
+                  {question![quizQuestion].option1}
                 </button>
                 <button
-                  className="btn btn-primary w-64"
+                  className="btn btn-base w-64 h-14 bg-gradient-to-r from-sky-500 to-indigo-500 text-xl"
                   onClick={(e) => evaluateAnswer(e.currentTarget.value)}
-                  value={question![questionNumber - 1].option2}
+                  value={question![quizQuestion].option2}
                 >
-                  {question![questionNumber - 1].option2}
+                  {question![quizQuestion].option2}
                 </button>
                 <button
-                  className="btn btn-primary w-64"
+                  className="btn btn-base w-64 h-14 bg-gradient-to-r from-violet-500 to-fuchsia-500 text-xl"
                   onClick={(e) => evaluateAnswer(e.currentTarget.value)}
-                  value={question![questionNumber - 1].option3}
+                  value={question![quizQuestion].option3}
                 >
-                  {question![questionNumber - 1].option3}
+                  {question![quizQuestion].option3}
                 </button>
                 <button
-                  className="btn btn-primary w-64"
+                  className="btn btn-base w-64 h-14 bg-gradient-to-r from-purple-500 to-pink-500 text-xl"
                   onClick={(e) => evaluateAnswer(e.currentTarget.value)}
-                  value={question![questionNumber - 1].option4}
+                  value={question![quizQuestion].option4}
                 >
-                  {question![questionNumber - 1].option4}
+                  {question![quizQuestion].option4}
                 </button>
               </div>
             </div>

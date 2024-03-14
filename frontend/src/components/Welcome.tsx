@@ -11,7 +11,7 @@ export const Welcome = () => {
             soon
           </p>
           <Link to="/homequiz">
-            <button className="btn btn-primary text-base">Go To Quiz</button>
+            <button className="btn btn-secondary text-base">Go To Quiz</button>
           </Link>
         </div>
       </div>
