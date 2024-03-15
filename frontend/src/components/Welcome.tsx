@@ -15,6 +15,8 @@ export const Welcome = () => {
               Guess the origin country of the song
             </button>
           </Link>
+          <div className="font-bold m-2"
+          >Correct answer grants you 20 points</div>
         </div>
       </div>
     </div>
