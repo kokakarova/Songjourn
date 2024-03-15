@@ -22,6 +22,14 @@ export default function Login() {
               Login with Spotify
             </button>
           </a>
+          <div>
+            <a href="https://open.spotify.com/">
+              <img
+                className="h-8 object-contain my-5 justify-end"
+                src="Spotify_Logo_RGB_Black.png"
+              ></img>
+            </a>
+          </div>
         </div>
       </div>
     </div>

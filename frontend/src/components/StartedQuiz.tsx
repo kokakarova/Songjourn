@@ -65,9 +65,14 @@ export default function StartedQuiz() {
               <div className="flex justify-center">
                 <div className="card w-96 bg-base-100 lg:shadow-xl lg:bg-gradient-to-br m-3">
                   <div className="card-body items-center text-center">
+                    <img
+                      className="h-5 object-contain"
+                      src="Spotify_Icon_RGB_Black.png"
+                    ></img>
                     <h2 className="card-title">Question {questionNumber}/5</h2>
                     <h3 className="card-title">Where is this song from?</h3>
                   </div>
+
                   <figure className="px-10 pt-10">
                     <audio
                       src={trackPreviewLink}
