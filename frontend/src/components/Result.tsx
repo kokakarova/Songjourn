@@ -20,6 +20,9 @@ export default function Result() {
           <Link to="/questions">
             <button onClick={handleClick} className="btn btn-secondary m-1.5">New Quiz</button>
           </Link>
+          <Link to="/">
+            <button onClick={handleClick} className="btn btn-secondary m-1.5">Home</button>
+          </Link>
         </div>
       </div>
     </div>
