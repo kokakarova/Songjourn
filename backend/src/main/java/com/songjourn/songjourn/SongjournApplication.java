@@ -8,6 +8,7 @@ public class SongjournApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SongjournApplication.class, args);
+
 	}
 
 }

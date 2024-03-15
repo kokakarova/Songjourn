@@ -59,13 +59,14 @@ public class QuizService {
     public List<String> getRandomCountries(int countryIdCorrectAnswer) {
         int maxRange = Math.toIntExact(countryRepo.getCountryTableSize());
         List<Integer> randomIds = getRandomIds(4, maxRange);
-        if (!randomIds.contains(countryIdCorrectAnswer)) {
+        if (!randomIds.contains(Integer.valueOf(countryIdCorrectAnswer))) {
             randomIds.removeFirst();
             randomIds.add(countryIdCorrectAnswer);
         }
-
+        System.out.println("countries after fetch reequest:");
         return randomIds.stream()
                 .map(n -> countryRepo.findCountryById((long) n).getCountry())
+                .peek(System.out::println)
                 .toList();
     }
 }
