@@ -63,7 +63,6 @@ public class QuizService {
             randomIds.removeFirst();
             randomIds.add(countryIdCorrectAnswer);
         }
-        System.out.println("countries after fetch reequest:");
         return randomIds.stream()
                 .map(n -> countryRepo.findCountryById((long) n).getCountry())
                 .peek(System.out::println)
