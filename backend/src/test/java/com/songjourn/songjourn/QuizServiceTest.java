@@ -7,7 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
+
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 class QuizServiceTest {
 
@@ -18,10 +21,19 @@ class QuizServiceTest {
     @Autowired
     QuizService service;
 
-//    @Value("${server.port}")
+    //    @Value("${server.port}")
     protected int port = 9999;
+
     @Test
     void contextLoader() {
 
+    }
+
+    @Test
+    void shouldSomething() {
+        int correctAnswerCountryId = 1;
+        List<String> expectedList = service.getRandomCountries(correctAnswerCountryId);
+        List<String> distinctList = expectedList.stream().distinct().toList();
+        assertEquals(4, distinctList.size());
     }
 }
