@@ -1,9 +1,6 @@
 package com.songjourn.songjourn.model;
 
-import org.springframework.stereotype.Component;
-
 import java.util.List;
-
 public class Question {
     private String spotifyId;
     private String correctAnswer;
