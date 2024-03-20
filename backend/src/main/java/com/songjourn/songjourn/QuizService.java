@@ -38,7 +38,7 @@ public class QuizService {
     }
     private Set<Integer> getRandomIds(int numberOfIds, int maxRange) {
         System.out.println("In getRandomIds, return set");
-        return new Random().ints(1, maxRange+1)
+        return new Random().ints(1, maxRange + 1)
                 .distinct()
                 .limit(numberOfIds)
                 .boxed()
