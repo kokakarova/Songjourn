@@ -15,7 +15,7 @@ DataBase:
    - Frontend
      - React, TypeScript, Tailwind, daisyUI
    - Backend
-     - Java, Spring Boot, JPA, Docker, Postgresql, pgAdmins 4
+     - Java, Spring Boot, JPA, Docker, Postgresql
 
 3. Possible additional features:
    - Bonus questions
