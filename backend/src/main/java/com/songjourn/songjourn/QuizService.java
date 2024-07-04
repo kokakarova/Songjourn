@@ -37,7 +37,6 @@ public class QuizService {
                 .toList();
     }
     private Set<Integer> getRandomIds(int numberOfIds, int maxRange) {
-        System.out.println("In getRandomIds, return set");
         return new Random().ints(1, maxRange + 1)
                 .distinct()
                 .limit(numberOfIds)
@@ -65,9 +64,7 @@ public class QuizService {
     public List<String> getRandomCountries(int countryIdCorrectAnswer) {
         int maxRange = Math.toIntExact(countryRepo.getCountryTableSize());
         Set<Integer> randomIds = getRandomIds(4, maxRange);
-        randomIds.forEach(System.out::println);
         if (!randomIds.contains(countryIdCorrectAnswer)) {
-            System.out.println("doesn't contain correct answer id");
             var elementToRemove = randomIds.stream().findFirst().get();
             randomIds.remove(elementToRemove);
             randomIds.add(countryIdCorrectAnswer);
