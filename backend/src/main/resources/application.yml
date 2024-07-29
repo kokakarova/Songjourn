@@ -2,34 +2,19 @@ spring:
   application:
     name: songjourn
   datasource:
-    url: jdbc:postgresql://localhost:5432/songjourndb
-    username: ${POSTGRES_USER_NAME}
-    password: ${POSTGRES_PASSWORD}
+    url: ${DB.URL}
+    username: ${DB.USERNAME}
+    password: ${DB.PASSWORD}
   jpa:
     defer-datasource-initialization: true
     hibernate:
-      ddl-auto: create-drop
-    show-sql: true
+      ddl-auto: update
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
-  h2:
-    console:
-      enabled: true
-      path: /songjourn
   sql:
     init:
-      data-locations: classpath:data.sql
       platform: postgresql
       mode: always
-  output:
-    ansi:
-      enabled: always
-server:
-  port: 8011
-logging:
-  level:
-    org:
-      springframework:
-        boot:
-          autoconfigure: ERROR
+  config:
+    import: optional:secret.yml
