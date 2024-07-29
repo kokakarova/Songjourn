@@ -32,7 +32,12 @@ build/
 ### VS Code ###
 .vscode/
 
+### DB ###
 docker-compose.yml
 /data
 data
+
+### Secrets ###
+secret.yml
+
 .DS_Store
