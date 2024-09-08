@@ -1,26 +1,15 @@
 package songjourn.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
 import java.util.List;
+
+@Data
+@AllArgsConstructor
 public class Question {
     private String spotifyId;
     private String correctAnswer;
     private List<String> answerOptions;
 
-    public Question(String spotifyId, String correctAnswer, List<String> answerOptions) {
-        this.spotifyId = spotifyId;
-        this.correctAnswer = correctAnswer;
-        this.answerOptions = answerOptions;
-    }
-
-    public String getSpotifyId() {
-        return spotifyId;
-    }
-
-    public String getCorrectAnswer() {
-        return correctAnswer;
-    }
-
-    public List<String> getAnswerOptions() {
-        return answerOptions;
-    }
 }

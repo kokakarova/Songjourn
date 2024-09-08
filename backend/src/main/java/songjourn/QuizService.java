@@ -1,5 +1,6 @@
 package songjourn;
 
+import lombok.Data;
 import songjourn.model.Question;
 import songjourn.model.Track;
 import songjourn.repository.CountryRepository;
@@ -10,14 +11,11 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
+@Data
 public class QuizService {
     private final TrackRepository trackRepo;
     private final CountryRepository countryRepo;
 
-    public QuizService(TrackRepository trackRepo, CountryRepository countryRepo) {
-        this.trackRepo = trackRepo;
-        this.countryRepo = countryRepo;
-    }
 
     public List<Question> getListOfQuestions() {
         List<Track> randomTracks = getRandomTracks();

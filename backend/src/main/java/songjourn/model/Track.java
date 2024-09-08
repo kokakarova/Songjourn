@@ -1,9 +1,11 @@
 package songjourn.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 @Entity
 @Table(name = "tracks")
+@Data
 public class Track {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

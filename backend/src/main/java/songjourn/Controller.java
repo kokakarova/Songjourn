@@ -1,5 +1,7 @@
 package songjourn;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,13 +15,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 @CrossOrigin
+@AllArgsConstructor
 public class Controller {
 
 private final QuizService service;
 
-    public Controller(QuizService service) {
-        this.service = service;
-    }
 
     @GetMapping
     public ResponseEntity<List<QuestionDto>> getQuestion() {
