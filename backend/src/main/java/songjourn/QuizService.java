@@ -1,7 +1,7 @@
 package songjourn;
 
 import lombok.Data;
-import songjourn.model.Question;
+import songjourn.dto.QuestionDto;
 import songjourn.model.Track;
 import songjourn.repository.CountryRepository;
 import songjourn.repository.TrackRepository;
@@ -17,10 +17,10 @@ public class QuizService {
     private final CountryRepository countryRepo;
 
 
-    public List<Question> getListOfQuestions() {
+    public List<QuestionDto> getListOfQuestions() {
         List<Track> randomTracks = getRandomTracks();
         return randomTracks.stream()
-                .map(t -> new Question(
+                .map(t -> new QuestionDto(
                         t.getSpotifyId(),
                         t.getCountry().getCountry(),
                         getRandomCountries(Math.toIntExact(t.getCountry().getId()))

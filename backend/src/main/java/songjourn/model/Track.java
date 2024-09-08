@@ -18,12 +18,4 @@ public class Track {
     @ManyToOne(optional = false)
     @JoinColumn(name = "country_id")
     private Country country;
-
-    public String getSpotifyId() {
-        return spotifyId;
-    }
-
-    public Country getCountry() {
-        return country;
-    }
 }
